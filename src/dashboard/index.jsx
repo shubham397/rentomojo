@@ -1,40 +1,65 @@
-import React, {useState, useEffect} from 'react';
-import { Button} from 'antd';
-import './index.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Table} from 'antd';
 import 'antd/dist/antd.css';
-import NewGame from "../question/index.jsx"
-import HighScore from "../highScore/index.jsx"
+
+import './index.css';
+import {baseUrl} from '../util/url'
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Company',
+    dataIndex: 'companyName',
+    key: 'company',
+  },
+  {
+    title: 'Website',
+    dataIndex: 'blog',
+    key: 'website',
+  }
+];
 
 const App = () => {
 
-  const [page, setPage] = useState("new");
+  const [tdata,setTdata] = useState("");
 
   useEffect(()=>{
-    localStorage.setItem("userName", "");
-    localStorage.setItem("score", 0);
+    axios.get(`${baseUrl}/users`)
+      .then(function (response) {
+        const data = response.data.map((newData)=>{
+          return {name:newData.name, companyName:newData.company.name, blog:newData.website, userId:newData.id}
+        })
+        setTdata(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   },[])
 
-  const onNewClick = () => {
-    localStorage.setItem("userName", "");
-    localStorage.setItem("score", 0);
-    setPage('new');
-  };
-
-  const onHighClick = () => {
-    setPage('high');
-  };
+  function onRowClick(userId){
+    console.log(userId);
+    window.location.href=`/post/${userId}`;
+  }
 
   return (
-    <div style={{width: "300px", margin: "auto", marginTop:"100px"}}>
-        <Button onClick={()=>{onNewClick()}}>
-          New Game
-        </Button>
-        <Button style={{marginLeft:"30px"}} onClick={()=>{onHighClick()}}>
-          View High Score
-        </Button>
-        <div style={{marginTop:"30px", border:"solid blue", padding:"10px"}}>
-          {page==="new"?<NewGame />:<HighScore/>}
-        </div>
+    <div className="mainDiv">
+        <h1>RentoMojo FrontEnd Assignment</h1>
+        <Table
+          className="userTable"
+          columns={columns} 
+          dataSource={tdata} 
+          pagination={false} 
+          onRow={(tdata)=>{
+            return{
+              onClick:()=>{onRowClick(tdata.userId)}
+            }
+          }}
+          />
     </div>
   );
 };

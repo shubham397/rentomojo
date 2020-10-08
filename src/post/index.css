@@ -1,0 +1,11 @@
+.titleDiv{
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #e2e2e2;
+    border-radius: 32px;
+}
+
+.backBtn{
+    margin-bottom: 10px;
+}

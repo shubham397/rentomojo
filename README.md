@@ -4,7 +4,7 @@ git clone
 
 ## steps for ReactJs
 ```sh
-$ cd Rentomojo
+$ cd rentomojo
 $ npm install
 $ npm start
 ```

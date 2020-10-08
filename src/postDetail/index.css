@@ -1,0 +1,11 @@
+.titleDiv{
+    cursor: default;
+}
+
+.commentDiv{
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 32px;
+    background-color: #c2c2c2;
+}

@@ -6,6 +6,10 @@
     border-radius: 32px;
 }
 
+.titleDiv:hover{
+    background-color: #b2b2b2;
+}
+
 .backBtn{
     margin-bottom: 10px;
 }

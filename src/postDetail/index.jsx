@@ -61,7 +61,7 @@ const App = () => {
         <Button type="primary" shape="round" className="backBtn" onClick={onClickBack}>Back</Button>
         {postData.map((data)=>{
           return (
-            <div className="titleDiv">
+            <div className="titleDivPost">
               <h1>
                 {data.title}
               </h1>

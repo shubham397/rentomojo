@@ -4,3 +4,8 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+td{
+    cursor: pointer;
+    background-color: #e2e2e2;
+}

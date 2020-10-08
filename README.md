@@ -1,7 +1,8 @@
 # Rentomojo
 
-git clone
+```
+$ git clone
 $ cd rentomojo
 $ npm install
 $ npm start
-
+```

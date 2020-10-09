@@ -17,7 +17,7 @@ const App = () => {
     const postId = window.location.href.split("/")[4];
     axios.get(`${baseUrl}/posts/${postId}`)
       .then(function (response) {
-        data.push({id:response.data.id, title:response.data.title, body:response.data.body})
+        data.push({id:response.data.userId, title:response.data.title, body:response.data.body})
         setPostData(data);
       })
       .catch(function (error) {
@@ -49,7 +49,6 @@ const App = () => {
     axios.delete(`${baseUrl}/posts/${id}`)
       .then(function (response) {
         alert("Redirecting to Post Page");
-        id = id/10;
         window.location.href=`/post/${id}`;
       })
       .catch(function (error) {

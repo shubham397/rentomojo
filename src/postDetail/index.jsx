@@ -48,7 +48,8 @@ const App = () => {
   function onClickDelete(id){
     axios.delete(`${baseUrl}/posts/${id}`)
       .then(function (response) {
-        alert("Redirecting to Post Page")
+        alert("Redirecting to Post Page");
+        id = id/10;
         window.location.href=`/post/${id}`;
       })
       .catch(function (error) {
